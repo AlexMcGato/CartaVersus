@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\mainplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\adversario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\adversario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\cartaataque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\cartaataque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|d:\\alejandro\\dam\\tfg\\proyecto\\cartaversus\\assets\\script\\efectocarta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\efectocarta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +38,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 10,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\GameManager.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Script\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:21.436Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -26,6 +69,84 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EfectoCarta.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\EfectoCarta.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\EfectoCarta.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\EfectoCarta.cs",
+              "RelativeToolTip": "Assets\\Script\\EfectoCarta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:22.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Player.cs",
+              "RelativeToolTip": "Assets\\Script\\Player.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwD0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:22.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Adversario.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Adversario.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Adversario.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Adversario.cs",
+              "RelativeToolTip": "Assets\\Script\\Adversario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:21.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartaAtaque.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\CartaAtaque.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\CartaAtaque.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\CartaAtaque.cs",
+              "RelativeToolTip": "Assets\\Script\\CartaAtaque.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:21.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Card.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Card.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Card.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Card.cs",
+              "RelativeToolTip": "Assets\\Script\\Card.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:20.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPlayer.cs",
+              "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\MainPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\MainPlayer.cs",
+              "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\MainPlayer.cs",
+              "RelativeToolTip": "Assets\\Script\\MainPlayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:33:05.981Z",
+              "EditorCaption": ""
             }
           ]
         }
