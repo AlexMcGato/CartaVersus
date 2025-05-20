@@ -60,13 +60,17 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Cartas\Card.cs" />
+    <Compile Include="Assets\Script\Cartas\CartaWeaken.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\Card.cs" />
+    <Compile Include="Assets\Script\Cartas\CartaAtaque.cs" />
     <Compile Include="Assets\Script\MainPlayer.cs" />
+    <Compile Include="Assets\Script\Cartas\CartaCounter.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\Cartas\CartaProt.cs" />
     <Compile Include="Assets\Script\Adversario.cs" />
-    <Compile Include="Assets\Script\CartaAtaque.cs" />
-    <Compile Include="Assets\Script\EfectoCarta.cs" />
+    <Compile Include="Assets\Script\Cartas\Modifiers\ModificadorCarta.cs" />
+    <Compile Include="Assets\Script\Cartas\Modifiers\WeakenMod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

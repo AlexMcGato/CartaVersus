@@ -27,24 +27,22 @@ public class GameManager : MonoBehaviour
 
     public void resolver()
     {
-        foreach (Card card in jugadaPlayer)
-        {
-            card.gm = this;
-        }
 
+        Debug.Log("Inicio de resolucion");
         if (jugadaAdversario.Count <= jugadaPlayer.Count)
         {
-
+            //Debug.Log("MainPlayer usa mismas o mas cartas");
+            //Debug.Log(jugadaPlayer.Count);
 
             for (int i = 0; i < jugadaPlayer.Count; i++)
             {
-
+                //Debug.Log("Activando efecto de carta");
                 jugadaPlayer[i].efecto();
 
                 if (i <= jugadaAdversario.Count - 1)
                     jugadaAdversario[i].efecto();
 
-                triggerCard();
+                regularCombatTrigger();
             }
         }
         else
@@ -57,36 +55,73 @@ public class GameManager : MonoBehaviour
                 if (i <= jugadaPlayer.Count - 1)
                     jugadaPlayer[i].efecto();
 
-                triggerCard();
+                regularCombatTrigger();
             }
         }
 
-        
+        Debug.Log("Final de resolucion");
 
     }
 
-    public void triggerCard()
+    public void regularCombatTrigger()
     {
-        if (playerCounter != 0 && foeCounter != 0)
-            return;
-
-
-        if (playerCounter != 0)
+        if (playerAttack <= 0 && foeAttack <= 0)
         {
-           if (foeProt == 0) 
-                foe.damage(foeAttack + playerCounter);
+            Debug.Log("Ningun bando ataca");
+
+            resetCombatValues();
+            return;
+        }
+           
+        if (playerCounter != 0 && foeAttack >0)
+        {
+            Debug.Log("player counter");
+
+            foe.damage(foeAttack + playerCounter - foeProt);
+            resetCombatValues();
+            return;
         }
 
-        if (foeCounter != 0)
+        if (foeCounter != 0 && playerAttack >0)
         {
-            if (playerProt == 0)
-                player.damage(playerAttack + foeCounter);
+            Debug.Log("foe counter");
+
+            player.damage(playerAttack + foeCounter -  playerProt);
+            resetCombatValues();
+            return;
         }
         
+        if (playerAttack > 0)
+        {
+            Debug.Log("player attacks");
+            foe.damage(playerAttack - foeProt);
+        }
+            
 
+        if (foeAttack > 0) 
+        {
+            Debug.Log("foe attacks");
+            player.damage(foeAttack - playerProt);
+        }
+
+        resetCombatValues();
 
     }
-    
+
+    private void resetCombatValues()
+    {
+        foeAttack = 0;
+        foeCounter = 0;
+        foeProt = 0;
+        playerAttack = 0;
+        playerCounter = 0;
+        playerProt = 0;
+    }
+
+    internal void modifierToFoe(ModificadorCarta modifier)
+    {
+        foe.cardMods[modifier.category].Add(modifier);
+    }
 }
 
 
