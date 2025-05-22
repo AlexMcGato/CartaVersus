@@ -10,9 +10,17 @@ public  class CartaAtaque : Card
 
    
 
-     public override void efecto()
+     public override void clash(Card origen)
      {
         
         owner.attack(attackvalue);
      }
+
+     public override void activacion(Player player)
+     {
+
+        efectocarta = new DmgEfect(attackvalue);
+        efectocarta.activacion(player);
+     }
+
 }

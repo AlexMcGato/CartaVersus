@@ -10,6 +10,7 @@ public abstract class Card : MonoBehaviour
 
     public GameManager gm;
 
+    public Efecto efectocarta;
    
     public void selectCard()
     {
@@ -37,9 +38,16 @@ public abstract class Card : MonoBehaviour
 
     }
 
-    public virtual void efecto()
+    //efecto cuando se recibe
+    public virtual void clash(Card origen)
     {
-        
+        efectocarta.clash(origen); 
     }
     
+    
+    public virtual void activacion(Player player)
+    {
+      efectocarta.activacion(player);
+    }
+
 }

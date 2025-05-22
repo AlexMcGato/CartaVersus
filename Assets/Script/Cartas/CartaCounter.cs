@@ -8,7 +8,7 @@ public class CartaCounter : Card
 
     
 
-    public override void efecto()
+    public override void clash(Card origen)
     {
         owner.counter(counterValue);
     }

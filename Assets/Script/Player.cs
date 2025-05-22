@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int defensa = 1;
     public int stamina = 10;
     public int hp = 3;
+    public int prot = 0;
     
     public List<Card> deck = new List<Card>();
     public Transform[] espacios;
@@ -50,8 +51,13 @@ public class Player : MonoBehaviour
 
     public void SacaCarta()
     {
-       // Debug.Log("sacacarta");
-       // Console.WriteLine(deck.Count);
+
+        bool cointoss = new System.Random().Next(0, 2) == 0 ? true : false;
+
+        Debug.Log("Cointoss: " + cointoss); 
+
+        // Debug.Log("sacacarta");
+        // Console.WriteLine(deck.Count);
         if (deck.Count >= 1)
         {
 
@@ -88,7 +94,7 @@ public class Player : MonoBehaviour
     }
     public virtual void protect(int value)
     {
-
+          prot = value;
     }
 
 

@@ -26,7 +26,7 @@ public class MainPlayer : Player
     }
     public override void protect(int value)
     {
-        gameManager.playerProt = value;
+       base.protect(value);
     }
     public override void counter(int value)
     {

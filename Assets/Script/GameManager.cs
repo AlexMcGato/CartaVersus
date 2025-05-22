@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public String[] combatiente = new String[2] { "Jugador", "Adversario" };
 
+    public bool[] prioridad = new bool[2] {false, false};
+
     public int playerAttack = 0;
     public int playerCounter = 0;
     public int playerProt = 0;
@@ -28,32 +32,53 @@ public class GameManager : MonoBehaviour
     public void resolver()
     {
 
+        bool res_prio;
+
+        if (prioridad[0] == prioridad[1])
+            res_prio = new System.Random().Next(0, 2) == 0 ? true : false;
+        else if (prioridad[0])
+            res_prio = true;
+        else
+            res_prio = false;
+
+            Debug.Log("Cointoss: " + res_prio);
+
+
+        int playedCardCount = jugadaPlayer.Count >= jugadaAdversario.Count ? jugadaPlayer.Count : jugadaAdversario.Count ;
+
         Debug.Log("Inicio de resolucion");
-        if (jugadaAdversario.Count <= jugadaPlayer.Count)
+        if (res_prio)
         {
-            //Debug.Log("MainPlayer usa mismas o mas cartas");
+            Debug.Log("Iniciativa del jugador");
             //Debug.Log(jugadaPlayer.Count);
 
-            for (int i = 0; i < jugadaPlayer.Count; i++)
-            {
-                //Debug.Log("Activando efecto de carta");
-                jugadaPlayer[i].efecto();
+             
+
+            for (int i = 0; i < playedCardCount; i++)
+            {              
+               //carta recibe clash de la otra
+               
 
                 if (i <= jugadaAdversario.Count - 1)
-                    jugadaAdversario[i].efecto();
+                    jugadaAdversario[i].clash(jugadaPlayer[i]);
+
+                if (i <= jugadaPlayer.Count - 1)
+                    jugadaPlayer[i].clash(jugadaAdversario[i]);
 
                 regularCombatTrigger();
             }
         }
         else
         {
-            for(int i = 0; i < jugadaAdversario.Count; i++)
+            for (int i = 0; i < playedCardCount; i++)
             {
+                Debug.Log("Iniciativa del adversario");
 
-                jugadaAdversario[i].efecto();
+                if (i <= jugadaAdversario.Count - 1)
+                    //jugadaAdversario[i].clash();
 
                 if (i <= jugadaPlayer.Count - 1)
-                    jugadaPlayer[i].efecto();
+                    //jugadaPlayer[i].clash();
 
                 regularCombatTrigger();
             }

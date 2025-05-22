@@ -8,8 +8,11 @@ public class CartaProt : Card
 
     
 
-    public override void efecto()
+    public override void clash(Card origen)
     {
-        owner.protect(protectValue);
+       
+        efectocarta = new ProtEfect(protectValue);
+        efectocarta.clash(origen);
+       
     }
 }

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Cartas\Card.cs" />
+    <Compile Include="Assets\Script\Efectos\CounterEfect.cs" />
     <Compile Include="Assets\Script\Cartas\CartaWeaken.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Cartas\CartaAtaque.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Assets\Script\Adversario.cs" />
     <Compile Include="Assets\Script\Cartas\Modifiers\ModificadorCarta.cs" />
     <Compile Include="Assets\Script\Cartas\Modifiers\WeakenMod.cs" />
+    <Compile Include="Assets\Script\Efectos\Efecto.cs" />
+    <Compile Include="Assets\Script\Efectos\ProtEfect.cs" />
+    <Compile Include="Assets\Script\Efectos\DmgEfect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

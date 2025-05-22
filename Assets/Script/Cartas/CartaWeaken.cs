@@ -7,7 +7,7 @@ public class CartaWeaken : Card
     public int weakenvalue = 1;
 
     public WeakenMod weaken;
-    public override void efecto()
+    public override void clash(Card origen)
     {
         //Debug.Log("Weaken activado");
 
