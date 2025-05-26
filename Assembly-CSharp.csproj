@@ -62,13 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Cartas\Card.cs" />
     <Compile Include="Assets\Script\Efectos\CounterEfect.cs" />
-    <Compile Include="Assets\Script\Cartas\CartaWeaken.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\Cartas\CartaAtaque.cs" />
     <Compile Include="Assets\Script\MainPlayer.cs" />
-    <Compile Include="Assets\Script\Cartas\CartaCounter.cs" />
     <Compile Include="Assets\Script\Player.cs" />
-    <Compile Include="Assets\Script\Cartas\CartaProt.cs" />
     <Compile Include="Assets\Script\Adversario.cs" />
     <Compile Include="Assets\Script\Cartas\Modifiers\ModificadorCarta.cs" />
     <Compile Include="Assets\Script\Cartas\Modifiers\WeakenMod.cs" />

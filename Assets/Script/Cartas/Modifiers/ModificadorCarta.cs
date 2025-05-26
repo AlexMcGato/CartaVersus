@@ -12,15 +12,31 @@ public class ModificadorCarta
     //2= counter
 
     public int category = 0;
+
+
     public int cardcounter = 99;
     public int turncounter = 99;
-   
-   
 
-    public virtual Card applyMod(Card carta)
+    public int baseCardcounter = 99;
+    public int baseTurncounter = 99;
+
+    public int value = 0;
+
+    public virtual void applyMod()
     {
-        return carta;
+       this.cardcounter --; 
     }
+
+    public ModificadorCarta(int cardCounter, int turncounter)
+    {
+        this.baseCardcounter = cardCounter;
+        this.baseTurncounter = turncounter;
+    }
+    public ModificadorCarta()
+    {
+       
+    }
+    /*
     public virtual CartaAtaque applyMod(CartaAtaque carta)
     {
         return carta;
@@ -33,4 +49,6 @@ public class ModificadorCarta
     {
         return carta;
     }
+     */
+
 }

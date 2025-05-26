@@ -5,21 +5,17 @@ using UnityEngine;
 
 public class WeakenMod : ModificadorCarta
 {
-    public int weakenValue = 1;
+    
     
 
     
-    public WeakenMod(int weakenValue)
+    public WeakenMod()
     {
-      this.weakenValue = weakenValue;
+      
     }
-    public WeakenMod(int weakenValue, int turncounter, int cardcounter = 99)
-    {
-        this.weakenValue = weakenValue;
-        this.turncounter = turncounter;
-        this.cardcounter = cardcounter;
-    }
-
+    
+    //obsoleto
+    /*
     public override CartaAtaque applyMod(CartaAtaque carta)
     {
        carta.attackvalue -= weakenValue;
@@ -30,4 +26,5 @@ public class WeakenMod : ModificadorCarta
 
        return carta;
     }
+    */
 }

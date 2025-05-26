@@ -102,81 +102,62 @@ public class Player : MonoBehaviour
     {
         List<Card> resultCards = new List<Card>();
 
-        foreach(Card card in jugada)
+        foreach (Card card in jugada)
         {
 
-            if (card is CartaAtaque)
+            //reset de carrtas por si se ha acabado el efecto
+            card.efectocarta.intensidad = card.efectocarta.intensidadBase;
+
+            foreach (Efecto secundario in card.efectocarta.adicionales)
             {
-                CartaAtaque attackCard = (CartaAtaque)card;
-
-                attackCard = applyAttackMods(attackCard);
-
-                resultCards.Add(attackCard);
-               
+                secundario.intensidad = secundario.intensidadBase;
             }
 
-            else if (card is CartaCounter)
+            //aplicacion de los efectos
+            foreach (var entry in cardMods)
             {
-                CartaCounter counterCard = (CartaCounter)card;
+                
+                //efectio principal
+                if (card.efectocarta.category == entry.Key)
+                {
+                    foreach(ModificadorCarta modifier in entry.Value)
+                    {
+                       card.efectocarta.modifyEfect(modifier.value);
+                       modifier.applyMod();
+                    }
+                }
 
-                counterCard = applyCounterMods(counterCard);
-
-                resultCards.Add(counterCard);
+                //efectos secundarios
+                foreach(Efecto secundario in card.efectocarta.adicionales)
+                {
+                    if (card.efectocarta.category == entry.Key)
+                    {
+                        foreach (ModificadorCarta modifier in entry.Value)
+                        {
+                            card.efectocarta.modifyEfect(modifier.value);
+                            modifier.applyMod();
+                        }
+                    }
+                }
 
             }
 
-            else if (card is CartaProt)
-            {
-                CartaProt protCard = (CartaProt)card;
-
-                protCard = applyProtMods(protCard);
-
-                resultCards.Add(protCard);
-
-            }
-
-            else
-            {
-                resultCards.Add(card);
-            }
         }
-
-        jugada = resultCards;
-
         
     }
 
-    private CartaAtaque applyAttackMods(CartaAtaque attackCard)
+    public void nextCardResolution()
     {
-        foreach (ModificadorCarta mod in cardMods[0]) 
-        {
-            attackCard = mod.applyMod(attackCard);
-        }
-        return attackCard;
+        this.prot = 0;
     }
-    private CartaProt applyProtMods(CartaProt protCard)
-    {
-        foreach (ModificadorCarta mod in cardMods[1])
-        {
-            protCard = mod.applyMod(protCard);
-        }
-        return protCard;
-    }
-    private CartaCounter applyCounterMods(CartaCounter counterCard)
-    {
-        foreach (ModificadorCarta mod in cardMods[2])
-        {
-            counterCard = mod.applyMod(counterCard);
-        }
-        return counterCard;
-    }
+    
 
     public virtual void damage(int damage)
     {
-        stamina -= damage - defensa;
+        stamina -= damage - defensa- prot;
 
-        if (defensa > 0)
-            defensa--;
+        if (prot > 0)
+            prot--;
 
 
         if (stamina <= 0)

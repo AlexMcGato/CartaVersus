@@ -20,6 +20,9 @@ public class MainPlayer : Player
         gameManager.resolver();
     }
 
+
+    //metodos obsoletos por el sistema de efectos
+    /*
     public override void attack(int value)
     {
         gameManager.playerAttack = value;
@@ -37,4 +40,5 @@ public class MainPlayer : Player
     {
        gameManager.modifierToFoe(modifier);
     }
+    */
 }

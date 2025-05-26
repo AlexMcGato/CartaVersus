@@ -24,6 +24,8 @@ public class Adversario : Player
         gameManager.jugadaAdversario = jugada;
     }
 
+    //metodos obsoletos por el sistema de efectos
+    /*
     public override void attack(int value)
     {
         gameManager.foeAttack = value;
@@ -36,4 +38,5 @@ public class Adversario : Player
     {
         gameManager.foeCounter = value;
     }
+    */
 }

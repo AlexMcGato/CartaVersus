@@ -7,16 +7,34 @@ public class DmgEfect : Efecto
 
 
 
-    public DmgEfect(int attackValue)
+    public DmgEfect(int intensidad, Player jugador, Player adversario) : base(intensidad, jugador, adversario)
     {
-         intensidad = attackValue;
+        
     }
-    public override void clash(Card o)
+    public override void clash(Card origen)
     {
-        base.clash(o);
+        //comprueba el main efect de la carta que le choca
+        //si es counter recibe counter
+        if (origen.efectocarta is CounterEfect)
+        {
+            player.damage(intensidad + origen.efectocarta.intensidad);
+            base.clash(origen);
+            return;
+        }
+
+        //si es proteccion activa primero la proteccion
+        if (origen.efectocarta is ProtEfect)
+        {
+            origen.efectocarta.activacion();
+            activacion();
+        }
+        
+       
+        
     }
-    public override void activacion(Player player)
+    public override void activacion()
     {
-       player.damage(intensidad);
+        adversario.damage(intensidad);
+        base.activacion();
     }
 }

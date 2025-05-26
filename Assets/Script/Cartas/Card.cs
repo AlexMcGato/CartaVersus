@@ -2,16 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Card : MonoBehaviour
+public class Card : MonoBehaviour
 {
     public int coste = 2;
+
+    //control de si esta seleccionada para jugarla
     private bool toPlay = false;
+
     public Player owner;
 
     public GameManager gm;
 
     public Efecto efectocarta;
    
+    public Card(GameManager gm, Player owner, Efecto efecto)
+    {
+        this.gm = gm;
+        this.owner = owner;
+        this.efectocarta = efecto;
+    }
+    public Card()
+    {
+        
+    }
     public void selectCard()
     {
         if(owner.stamina < coste)
@@ -45,9 +58,18 @@ public abstract class Card : MonoBehaviour
     }
     
     
-    public virtual void activacion(Player player)
+    public virtual void activacion()
     {
-      efectocarta.activacion(player);
+      efectocarta.activacion();
     }
 
+    public void emptyClash(Card origen)
+    {
+
+    }
+
+    public void emptyActivar()
+    {
+
+    }
 }

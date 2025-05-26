@@ -19,13 +19,7 @@ public class GameManager : MonoBehaviour
 
     public bool[] prioridad = new bool[2] {false, false};
 
-    public int playerAttack = 0;
-    public int playerCounter = 0;
-    public int playerProt = 0;
-
-    public int foeAttack = 0;
-    public int foeCounter = 0;
-    public int foeProt = 0;
+   
 
     public String ganador = "";
 
@@ -44,7 +38,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("Cointoss: " + res_prio);
 
 
+        //sacar numero mas alto de cartas juagadas
         int playedCardCount = jugadaPlayer.Count >= jugadaAdversario.Count ? jugadaPlayer.Count : jugadaAdversario.Count ;
+
+        //Creo cartas de efecto vacio para tener un objetivo en caso de que un bando juege mas cartas que el otro
+        Efecto efectoVacio = new Efecto();
+        Card genericaJugador = new Card(this, player, efectoVacio);
+        Card genericaAdversario = new Card(this, foe, efectoVacio);
 
         Debug.Log("Inicio de resolucion");
         if (res_prio)
@@ -52,35 +52,58 @@ public class GameManager : MonoBehaviour
             Debug.Log("Iniciativa del jugador");
             //Debug.Log(jugadaPlayer.Count);
 
-             
-
+            
             for (int i = 0; i < playedCardCount; i++)
-            {              
+            {
+                nextCard();
                //carta recibe clash de la otra
                
 
-                if (i <= jugadaAdversario.Count - 1)
-                    jugadaAdversario[i].clash(jugadaPlayer[i]);
+                if (i < jugadaAdversario.Count) {
+                    //no se sabe aun si el jugador sigue teniendo cartas en juego o no
+                    if (i < jugadaPlayer.Count)
+                        jugadaAdversario[i].clash(jugadaPlayer[i]);
+                    else
+                        jugadaAdversario[i].clash(genericaJugador);
+                }
+                else
+                {
+                    //si seguimos aqui y al adversario no le quedan cartas, quiere decir que el jugador ha usado mas
+                    genericaAdversario.emptyClash(jugadaPlayer[i]);
+                }
 
-                if (i <= jugadaPlayer.Count - 1)
-                    jugadaPlayer[i].clash(jugadaAdversario[i]);
 
-                regularCombatTrigger();
+                   
+
+                    //regularCombatTrigger();
             }
         }
         else
         {
             for (int i = 0; i < playedCardCount; i++)
             {
+                nextCard();
+                //carta recibe clash de la otra
                 Debug.Log("Iniciativa del adversario");
 
-                if (i <= jugadaAdversario.Count - 1)
-                    //jugadaAdversario[i].clash();
+                if (i < jugadaPlayer.Count)
+                {
+                    //no se sabe aun si el adversario sigue teniendo cartas en juego o no
+                    if (i < jugadaAdversario.Count)
+                        jugadaPlayer[i].clash(jugadaAdversario[i]);
+                    else
+                        jugadaAdversario[i].clash(genericaJugador);
+                }
+                else
+                {
+                    //si seguimos aqui y al adversario no le quedan cartas, quiere decir que el adversario ha usado mas
+                    genericaJugador.emptyClash(jugadaAdversario[i]);
+                }
 
-                if (i <= jugadaPlayer.Count - 1)
-                    //jugadaPlayer[i].clash();
 
-                regularCombatTrigger();
+
+
+                //regularCombatTrigger();
             }
         }
 
@@ -88,6 +111,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //reset de valores de por carta (proteccion)
+    public void nextCard()
+    {
+        player.nextCardResolution();
+        foe.nextCardResolution();
+    }
+
+    //metodos obsoleto con el nuevo sistema de efectos
+    /*
     public void regularCombatTrigger()
     {
         if (playerAttack <= 0 && foeAttack <= 0)
@@ -147,6 +179,7 @@ public class GameManager : MonoBehaviour
     {
         foe.cardMods[modifier.category].Add(modifier);
     }
+    */
 }
 
 

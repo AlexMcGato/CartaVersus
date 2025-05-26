@@ -5,13 +5,22 @@ using UnityEngine;
 public class ProtEfect : Efecto
 {
     
-    public ProtEfect(int value) 
+    public ProtEfect(int intensidad, Player jugador, Player adversario) : base(intensidad, jugador, adversario)
     {
-       intensidad = value;
+       
     }
     public override void clash(Card origen)
     {
         player.protect(intensidad);
-        origen.efectocarta.activacion(player);
+        base.activacion();
+        origen.efectocarta.activacion();
+        
     }
+    public override void activacion()
+    {
+        player.protect(intensidad);
+        base.activacion();
+    }
+
+   
 }
