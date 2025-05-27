@@ -9,15 +9,20 @@ public class Player : MonoBehaviour
     public Player rival;
 
     public int defensa = 1;
-    public int stamina = 10;
+    public int mana = 10;
     public int hp = 3;
     public int prot = 0;
+
+    public int manaSpendPreview = 0;
     
     public List<Card> deck = new List<Card>();
     public List<Card> discard = new List<Card>();
+    public List<Card> mano = new List<Card>();
+
     public Transform[] espacios;
     public Transform[] espaciosJugado;
     public Transform discardSpace;
+     
 
     public bool[] espacioslibres;
 
@@ -76,7 +81,7 @@ public class Player : MonoBehaviour
 
     
 
-    public void nuevoTurno()
+    public virtual void nuevoTurno()
     {
         //Debug.Log("Comienzo de turno");
         int contador = 0;
@@ -116,6 +121,7 @@ public class Player : MonoBehaviour
                     carta.transform.position = espacios[i].position;
                     carta.transform.SetSiblingIndex(i);
                     espacioslibres[i] = false;
+                    mano.Add(carta);
                     deck.Remove(carta);
                     return;
 
@@ -126,11 +132,11 @@ public class Player : MonoBehaviour
         }
         else if (discard.Count >= 1) 
         { 
-            /*
+            
             deck.AddRange(discard); 
             discard.Clear();
             SacaCarta();
-            */
+            
         }
 
     }
@@ -199,7 +205,7 @@ public class Player : MonoBehaviour
             
             
             discard.Add(card);
-           
+            mano.Remove(card);
 
 
         }
@@ -214,13 +220,13 @@ public class Player : MonoBehaviour
 
     public virtual void damage(int damage)
     {
-        stamina -= damage - defensa- prot;
+        mana -= damage - defensa- prot;
 
         if (prot > 0)
             prot--;
 
 
-        if (stamina <= 0)
+        if (mana <= 0)
         {
             hp--;
             

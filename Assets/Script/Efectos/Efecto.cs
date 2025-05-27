@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Efecto : MonoBehaviour
 {
-    //carta a que esta asociada
-    public Card asociada;
+    
 
     //player propietario
     public Player player;
@@ -34,6 +33,17 @@ public class Efecto : MonoBehaviour
         this.player = jugador;
     }
   
+    
+    public void setOwner(Player owner)
+    {
+       this.player = owner;  
+    }
+    public void setAdversario(Player rival)
+    {
+         this.adversario = rival;
+    }
+
+
     public virtual void clash(Card origen)
     {
 

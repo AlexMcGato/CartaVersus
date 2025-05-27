@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
     }
     public void selectCard()
     {
-        if(owner.stamina < coste)
+        if(owner.mana < coste)
            return;
 
         Debug.Log(toPlay);
@@ -38,14 +38,14 @@ public class Card : MonoBehaviour
 
         if (toPlay)
         {
-            owner.stamina -= coste;
+            owner.manaSpendPreview += coste;
             //Debug.Log("Isplayed");
             transform.position += Vector3.up *50;
             owner.jugada.Add(this);
         }
         else
         {
-            owner.stamina += coste;
+            owner.manaSpendPreview -= coste;
             transform.position -= Vector3.up *50;
             owner.jugada.Remove(this);
         }
