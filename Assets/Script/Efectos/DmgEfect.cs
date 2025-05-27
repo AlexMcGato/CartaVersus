@@ -17,7 +17,7 @@ public class DmgEfect : Efecto
         //si es counter recibe counter
         if (origen.efectocarta is CounterEfect)
         {
-            player.damage(intensidad + origen.efectocarta.intensidad);
+            player.damage(intensidad/3 + origen.efectocarta.intensidad);
             base.clash(origen);
             return;
         }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public int baseCost = 2;
     public int coste = 2;
 
     //control de si esta seleccionada para jugarla
     private bool toPlay = false;
 
     public Player owner;
+    public Player rival;
 
     public GameManager gm;
 

@@ -396,6 +396,7 @@
 "Assets/Script/Efectos/DmgEfect.cs"
 "Assets/Script/Efectos/Efecto.cs"
 "Assets/Script/Efectos/ProtEfect.cs"
+"Assets/Script/Efectos/StatusEfect.cs"
 "Assets/Script/GameManager.cs"
 "Assets/Script/MainPlayer.cs"
 "Assets/Script/Player.cs"

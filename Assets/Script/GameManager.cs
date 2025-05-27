@@ -19,12 +19,24 @@ public class GameManager : MonoBehaviour
 
     public bool[] prioridad = new bool[2] {false, false};
 
+    public bool playerHaJugado = false;
+    public bool rivalHaJugado = false;
    
 
     public String ganador = "";
 
+
+
+    
     public void resolver()
     {
+        if (!playerHaJugado || !rivalHaJugado)
+        {
+            return;
+        }
+
+        playerHaJugado = false;
+        rivalHaJugado= false;
 
         bool res_prio;
 
@@ -107,6 +119,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        
         Debug.Log("Final de resolucion");
 
     }

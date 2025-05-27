@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3942345227233248930}
   - component: {fileID: 626685914236571760}
   - component: {fileID: -4604303837468359814}
-  - component: {fileID: 5604662758092496474}
+  - component: {fileID: 966546475533480707}
+  - component: {fileID: 1160174423829489786}
   m_Layer: 0
   m_Name: CounterCard
   m_TagString: Untagged
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5604662758092496474}
+      - m_Target: {fileID: 966546475533480707}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: selectCard
         m_Mode: 1
@@ -133,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5604662758092496474
+--- !u!114 &966546475533480707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,10 +143,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8427306445423315771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db8530cf785dfb43bb87d4e372838b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 11624df25901b994fb50088226ede122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coste: 2
   owner: {fileID: 0}
+  rival: {fileID: 0}
   gm: {fileID: 0}
-  counterValue: 5
+  efectocarta: {fileID: 1160174423829489786}
+--- !u!114 &1160174423829489786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427306445423315771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6089c3d11564d1f48933b76f2c85c7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asociada: {fileID: 0}
+  player: {fileID: 0}
+  adversario: {fileID: 0}
+  intensidad: 0
+  intensidadBase: 0
+  category: 0
+  adicionales: []

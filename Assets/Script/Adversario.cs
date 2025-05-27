@@ -22,6 +22,8 @@ public class Adversario : Player
     {
         base.jugarMano();
         gameManager.jugadaAdversario = jugada;
+        gameManager.rivalHaJugado = true;
+        gameManager.resolver();
     }
 
     //metodos obsoletos por el sistema de efectos

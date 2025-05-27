@@ -12,7 +12,7 @@ public class CounterEfect : Efecto
     {
         if(origen.efectocarta is DmgEfect)
         {
-            adversario.damage(intensidad + origen.efectocarta.intensidad);
+            adversario.damage(intensidad/3 + origen.efectocarta.intensidad);
             base.activacion();
         }
 

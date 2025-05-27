@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Cartas\Card.cs" />
     <Compile Include="Assets\Script\Efectos\CounterEfect.cs" />
+    <Compile Include="Assets\Script\Efectos\StatusEfect.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\MainPlayer.cs" />
     <Compile Include="Assets\Script\Player.cs" />

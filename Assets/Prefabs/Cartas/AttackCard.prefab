@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3942345227233248930}
   - component: {fileID: 626685914236571760}
   - component: {fileID: -4604303837468359814}
-  - component: {fileID: 5674287864344896137}
+  - component: {fileID: 130613955126567915}
+  - component: {fileID: 239319054416707014}
   m_Layer: 0
   m_Name: AttackCard
   m_TagString: Untagged
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5674287864344896137}
+      - m_Target: {fileID: 130613955126567915}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: selectCard
         m_Mode: 1
@@ -133,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5674287864344896137
+--- !u!114 &130613955126567915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,10 +143,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8427306445423315771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53de03df83e6d8642b4390533dafcbd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 11624df25901b994fb50088226ede122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coste: 2
   owner: {fileID: 0}
+  rival: {fileID: 0}
   gm: {fileID: 0}
-  attackvalue: 5
+  efectocarta: {fileID: 239319054416707014}
+--- !u!114 &239319054416707014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427306445423315771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67b917c4c782ca4e80b8ef8c28a9f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asociada: {fileID: 0}
+  player: {fileID: 0}
+  adversario: {fileID: 0}
+  intensidad: 0
+  intensidadBase: 0
+  category: 0
+  adicionales: []

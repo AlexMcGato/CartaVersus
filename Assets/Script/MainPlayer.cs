@@ -17,6 +17,7 @@ public class MainPlayer : Player
     {
         base.jugarMano();
         gameManager.jugadaPlayer = jugada;
+        gameManager.playerHaJugado = true;
         gameManager.resolver();
     }
 
