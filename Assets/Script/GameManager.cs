@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
 {
     public MainPlayer player;
 
-    public Adversario foe;
+    public Adversario rival;
 
     public List<Card> jugadaPlayer;
 
     public List<Card> jugadaAdversario;
+
+    public Card emptyCardJugador;
+    public Card emptyCardAdversario;
 
     public String[] combatiente = new String[2] { "Jugador", "Adversario" };
 
@@ -21,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     public bool playerHaJugado = false;
     public bool rivalHaJugado = false;
-   
+
+    public bool finPartida = false;
 
     public String ganador = "";
 
@@ -34,9 +38,19 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        else
+            StartCoroutine(ejecutarResolucion());
+
+        
+       
+    }
+
+    IEnumerator ejecutarResolucion() 
+    {
+        yield return new WaitForSeconds(1);
 
         playerHaJugado = false;
-        rivalHaJugado= false;
+        rivalHaJugado = false;
 
         bool res_prio;
 
@@ -47,16 +61,16 @@ public class GameManager : MonoBehaviour
         else
             res_prio = false;
 
-            Debug.Log("Cointoss: " + res_prio);
+        Debug.Log("Cointoss: " + res_prio);
 
 
         //sacar numero mas alto de cartas juagadas
-        int playedCardCount = jugadaPlayer.Count >= jugadaAdversario.Count ? jugadaPlayer.Count : jugadaAdversario.Count ;
+        int playedCardCount = jugadaPlayer.Count >= jugadaAdversario.Count ? jugadaPlayer.Count : jugadaAdversario.Count;
 
         //Creo cartas de efecto vacio para tener un objetivo en caso de que un bando juege mas cartas que el otro
-        Efecto efectoVacio = new Efecto();
-        Card genericaJugador = new Card(this, player, efectoVacio);
-        Card genericaAdversario = new Card(this, foe, efectoVacio);
+
+        Card genericaJugador = emptyCardJugador;
+        Card genericaAdversario = emptyCardAdversario;
 
         Debug.Log("Inicio de resolucion");
         if (res_prio)
@@ -64,14 +78,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("Iniciativa del jugador");
             //Debug.Log(jugadaPlayer.Count);
 
-            
+
             for (int i = 0; i < playedCardCount; i++)
             {
                 nextCard();
-               //carta recibe clash de la otra
-               
+                //carta recibe clash de la otra
 
-                if (i < jugadaAdversario.Count) {
+
+                if (i < jugadaAdversario.Count)
+                {
                     //no se sabe aun si el jugador sigue teniendo cartas en juego o no
                     if (i < jugadaPlayer.Count)
                         jugadaAdversario[i].clash(jugadaPlayer[i]);
@@ -80,14 +95,14 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    //si seguimos aqui y al adversario no le quedan cartas, quiere decir que el jugador ha usado mas
+                    //si seguimos aqui y al adversario no le quedan cartas, quiere decir que el jugador ha usado mas y playedcardcount es las que ha usado
                     genericaAdversario.emptyClash(jugadaPlayer[i]);
                 }
 
 
-                   
 
-                    //regularCombatTrigger();
+
+                //regularCombatTrigger();
             }
         }
         else
@@ -104,7 +119,7 @@ public class GameManager : MonoBehaviour
                     if (i < jugadaAdversario.Count)
                         jugadaPlayer[i].clash(jugadaAdversario[i]);
                     else
-                        jugadaAdversario[i].clash(genericaJugador);
+                        jugadaPlayer[i].clash(genericaAdversario);
                 }
                 else
                 {
@@ -119,16 +134,31 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
+
         Debug.Log("Final de resolucion");
 
+        StartCoroutine(delayTurno());
     }
 
+    IEnumerator delayTurno()
+    {
+        yield return new WaitForSeconds(2);
+        nuevoturno();
+    }
     //reset de valores de por carta (proteccion)
     public void nextCard()
     {
         player.nextCardResolution();
-        foe.nextCardResolution();
+        rival.nextCardResolution();
+    }
+    public void nuevoturno()
+    {
+        if (!finPartida)
+        {
+            player.nuevoTurno();
+            rival.nuevoTurno();
+        }
+        
     }
 
     //metodos obsoleto con el nuevo sistema de efectos

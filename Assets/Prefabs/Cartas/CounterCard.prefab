@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11624df25901b994fb50088226ede122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coste: 2
+  baseCost: 3
+  coste: 3
   owner: {fileID: 0}
   rival: {fileID: 0}
   gm: {fileID: 0}
@@ -163,10 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6089c3d11564d1f48933b76f2c85c7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asociada: {fileID: 0}
   player: {fileID: 0}
   adversario: {fileID: 0}
-  intensidad: 0
-  intensidadBase: 0
-  category: 0
+  intensidad: 1
+  intensidadBase: 1
+  category: 2
   adicionales: []

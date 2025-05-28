@@ -9,8 +9,16 @@ public class MainPlayer : Player
         base.damage(damage);
         
         if (hp <= 0)
-            gameManager.ganador = gameManager.combatiente[0];
+            gameManager.ganador = gameManager.combatiente[1];
         
+    }
+    public override void getCountered(int damage)
+    {
+        base.getCountered(damage);
+
+        if (hp <= 0)
+            gameManager.ganador = gameManager.combatiente[1];
+
     }
 
     public override void jugarMano()

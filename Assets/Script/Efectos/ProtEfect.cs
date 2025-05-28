@@ -11,9 +11,12 @@ public class ProtEfect : Efecto
     }
     public override void clash(Card origen)
     {
-        player.protect(intensidad);
-        base.activacion();
-        origen.efectocarta.activacion();
+        //proteccion siempre activa antes que el resto
+        this.activacion();
+        
+        origen.activacion();
+        
+       
         
     }
     public override void activacion()

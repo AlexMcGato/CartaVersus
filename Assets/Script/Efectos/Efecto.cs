@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Efecto : MonoBehaviour
+public class Efecto :MonoBehaviour
 {
     
 
@@ -62,7 +62,11 @@ public class Efecto : MonoBehaviour
      
     public Efecto() { }
 
-    public void emptyClash() { }
+    public void emptyClash(Card origen)
+    {
+        if (origen.efectocarta is not CounterEfect)
+            origen.efectocarta.activacion();
+    }
     public void emptyActivate() { }
 
     public virtual void modifyEfect(int modifier)

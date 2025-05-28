@@ -19,7 +19,7 @@ public class StatusEfect : Efecto
     {
         player.protect(intensidad);
         base.activacion();
-        origen.efectocarta.activacion();
+        origen.activacion();
 
     }
     public override void activacion()

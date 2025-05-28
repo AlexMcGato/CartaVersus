@@ -27,28 +27,46 @@ public class Card : MonoBehaviour
     {
         
     }
+
+    public void Start()
+    {
+        efectocarta.player = owner;
+        efectocarta.adversario = rival;
+    }
     public void selectCard()
     {
         if(owner.mana < coste)
            return;
 
-        Debug.Log(toPlay);
+        //Debug.Log(toPlay);
 
-        toPlay = !toPlay;
+        
+        if(owner.mana >= coste + owner.manaSpendPreview)
+        {
+            toPlay = !toPlay;
 
-        if (toPlay)
-        {
-            owner.manaSpendPreview += coste;
-            //Debug.Log("Isplayed");
-            transform.position += Vector3.up *50;
-            owner.jugada.Add(this);
+            if (toPlay)
+            {
+                
+                owner.manaSpendPreview += coste;
+                //Debug.Log("Isplayed");
+                transform.position += Vector3.up * 50;
+                owner.espacioslibres[owner.mano.IndexOf(this)]= true;
+                owner.jugada.Add(this);
+                owner.updateMana();
+
+            }
+            else
+            {
+                owner.manaSpendPreview -= coste;
+                transform.position -= Vector3.up * 50;
+                owner.espacioslibres[owner.mano.IndexOf(this)] = false;
+                owner.jugada.Remove(this);
+                owner.updateMana();
+            }
         }
-        else
-        {
-            owner.manaSpendPreview -= coste;
-            transform.position -= Vector3.up *50;
-            owner.jugada.Remove(this);
-        }
+
+        
 
 
     }
@@ -67,7 +85,7 @@ public class Card : MonoBehaviour
 
     public void emptyClash(Card origen)
     {
-
+        efectocarta.emptyClash(origen);
     }
 
     public void emptyActivar()

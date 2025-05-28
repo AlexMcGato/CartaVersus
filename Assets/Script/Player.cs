@@ -1,17 +1,34 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public string nombre = "";
     public Player rival;
 
     public int defensa = 1;
+
     public int mana = 10;
+    public int maxMana = 10;
+    public int baseMana = 10;
+    public int manaRegen = 3;
+    public Slider manaBar;
+    public Slider manaSpendBar;
+
     public int hp = 3;
     public int prot = 0;
+    public bool losthp =false;
+
+    public TextMeshProUGUI cantidadDescartes;
+    public TextMeshProUGUI cantidadMazo;
+    public TextMeshProUGUI defensaUI;
+
+    public Image[] hpMarkers;
 
     public int manaSpendPreview = 0;
     
@@ -61,7 +78,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
+        manaBar.maxValue = maxMana;
+        manaSpendBar.maxValue = maxMana;
         //Debug.Log(conter++);
 
         foreach(Card card in deck)
@@ -77,6 +95,7 @@ public class Player : MonoBehaviour
             espacioslibres[i] = true;
 
         nuevoTurno();
+        
     }
 
     
@@ -84,17 +103,47 @@ public class Player : MonoBehaviour
     public virtual void nuevoTurno()
     {
         //Debug.Log("Comienzo de turno");
-        int contador = 0;
+        //int contador = 0;
+        prot = 0;
+        if (losthp)
+        {
+            this.mana = (maxMana / 2)-1;
+            losthp = false;
+        }
+
+        this.mana += manaRegen;
+
+        foreach (Card card in jugada)
+        {
+            discard.Add(card);
+            card.transform.position = discardSpace.position;
+            card.gameObject.SetActive(false);
+            
+        }
+
+        jugada.Clear();
+
         foreach(bool espacio in espacioslibres)
         {
             //Debug.Log("Espacio " + contador + " = " + espacio);
-            contador++;
+            //contador++;
             
             if (espacio)
                 SacaCarta();
         }
+        cantidadDescartes.text = discard.Count.ToString();
+        cantidadMazo.text = deck.Count.ToString();
+        defensaUI.text = defensa.ToString();
+        updateMana();
     }
 
+    public void updateMana()
+    {
+        manaBar.value = mana;
+        manaSpendBar.value = manaSpendPreview;
+
+
+    }
     public void SacaCarta()
     {
         
@@ -102,7 +151,7 @@ public class Player : MonoBehaviour
 
         //Debug.Log("Cointoss: " + cointoss); 
 
-         Debug.Log("sacacarta");
+         //Debug.Log("sacacarta");
         // Console.WriteLine(deck.Count);
         if (deck.Count >= 1)
         {
@@ -115,13 +164,13 @@ public class Player : MonoBehaviour
 
             for (int i = 0; i < espacioslibres.Length; i++)
             {
-                if (espacioslibres[i] == true)
+                if (espacioslibres[i])
                 {
                     carta.gameObject.SetActive(true);
                     carta.transform.position = espacios[i].position;
                     carta.transform.SetSiblingIndex(i);
                     espacioslibres[i] = false;
-                    mano.Add(carta);
+                    mano.Insert(i,carta);
                     deck.Remove(carta);
                     return;
 
@@ -151,18 +200,17 @@ public class Player : MonoBehaviour
     }
     public virtual void protect(int value)
     {
-          prot = value;
+          prot += value;
     }
 
-
-    public virtual void jugarMano()
+    public List<Card> aplicarModificadores(List<Card> cartas)
     {
         List<Card> resultCards = new List<Card>();
-
-        foreach (Card card in jugada)
+        foreach (Card card in cartas)
         {
-           
+
             //reset de carrtas por si se ha acabado el efecto
+            //(solo bajo un nivel en los adicionales, no deberia haber mas pero podria bajar mas si fuera necesario)
             card.efectocarta.intensidad = card.efectocarta.intensidadBase;
 
             foreach (Efecto secundario in card.efectocarta.adicionales)
@@ -173,20 +221,20 @@ public class Player : MonoBehaviour
             //aplicacion de los efectos
             foreach (var entry in cardMods)
             {
-                
+
                 //efectio principal
                 if (card.efectocarta.category == entry.Key)
                 {
-                    foreach(ModificadorCarta modifier in entry.Value)
+                    foreach (ModificadorCarta modifier in entry.Value)
                     {
-                       
-                       card.efectocarta.modifyEfect(modifier.value);
-                       modifier.applyMod();
+
+                        card.efectocarta.modifyEfect(modifier.value);
+                        modifier.applyMod();
                     }
                 }
 
                 //efectos secundarios
-                foreach(Efecto secundario in card.efectocarta.adicionales)
+                foreach (Efecto secundario in card.efectocarta.adicionales)
                 {
                     if (card.efectocarta.category == entry.Key)
                     {
@@ -200,36 +248,79 @@ public class Player : MonoBehaviour
 
             }
 
-            
-            card.transform.position = espaciosJugado[jugada.IndexOf(card)].position;
-            
-            
-            discard.Add(card);
-            mano.Remove(card);
+
+          resultCards.Add(card);  
 
 
         }
+
+        return resultCards; 
+    }
+
+    public virtual void jugarMano()
+    {
+        List<Card> resultCards = new List<Card>();
+
+        jugada = aplicarModificadores(jugada);
+        foreach(Card card in jugada)
+        {
+            card.transform.position = espaciosJugado[jugada.IndexOf(card)].position;
+
+            mano.Remove(card);
+        }
         
+        this.mana -= manaSpendPreview;
+        this.manaSpendPreview = 0;
+        updateMana();
+
     }
 
     public void nextCardResolution()
     {
-        this.prot = 0;
+        //this.prot = 0;
     }
     
+    public virtual void getCountered(int damage)
+    {
+        Debug.Log(nombre + " recibe " + damage + " puntos de counter dmg con " + defensa + " defensa ");
+        int incomingDMG = damage - (defensa);
+
+        Debug.Log("Mana previo " + mana);
+        mana -= incomingDMG >= 0 ? incomingDMG : 0;
+        Debug.Log("Mana posterior " + mana);
+
+
+        if (mana <= 0 && incomingDMG>0)
+        {
+            mana = 0;
+            hp--;
+            losthp = true;
+            //marcadores van 0-2 es facil desactivar el ultimo sin mas
+            hpMarkers[hp].gameObject.SetActive(false);
+        }
+    }
 
     public virtual void damage(int damage)
     {
-        mana -= damage - defensa- prot;
+        Debug.Log(nombre + " recibe "+ damage + " puntos de dmg con "+defensa +" defensa y "+ prot +" protect");
+        int incomingDMG = damage - (defensa + prot);
+
+        Debug.Log("Mana previo " + mana);
+        mana -= incomingDMG >= 0 ? incomingDMG : 0;
+        Debug.Log("Mana posterior " + mana);
 
         if (prot > 0)
             prot--;
 
 
-        if (mana <= 0)
+        if (mana <= 0 && incomingDMG > 0)
         {
+            mana = 0;
             hp--;
-            
+            losthp = true;
+            //marcadores van 0-2 es facil desactivar el ultimo sin mas
+            hpMarkers[hp].gameObject.SetActive(false);
+
         }
     }
 

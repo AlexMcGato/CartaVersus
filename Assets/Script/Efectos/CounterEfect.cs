@@ -10,17 +10,22 @@ public class CounterEfect : Efecto
 
     public override void clash(Card origen)
     {
-        if(origen.efectocarta is DmgEfect)
+        if (origen.efectocarta is DmgEfect)
         {
-            adversario.damage(intensidad/3 + origen.efectocarta.intensidad);
+            adversario.getCountered(origen.efectocarta.intensidad / 3 + intensidad);
             base.activacion();
         }
+        else
+            origen.efectocarta.activacion();
 
 
     }
     public override void activacion()
     {
-        adversario.damage(intensidad);
-        base.activacion();
+        //la activacion solo vendra de cosas que no sean ataques
+        // en cuyo caso no hace nada
+
+        //adversario.damage(intensidad);
+        //base.activacion();
     }
 }
