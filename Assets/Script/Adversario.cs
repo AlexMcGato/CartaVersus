@@ -12,15 +12,21 @@ public class Adversario : Player
         
         base.damage(damage);
 
-            if (hp <= 0)
-                gameManager.ganador = gameManager.combatiente[0];
+        if (hp <= 0)
+        {
+            gameManager.ganador = gameManager.combatiente[0];
+            gameManager.finDePartida("¡Victoria!");
+        }
     }
     public override void getCountered(int damage)
     {
         base.getCountered(damage);
 
         if (hp <= 0)
+        {
             gameManager.ganador = gameManager.combatiente[0];
+            gameManager.finDePartida("¡Victoria!");
+        }
 
     }
 

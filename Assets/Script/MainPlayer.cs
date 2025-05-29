@@ -7,17 +7,24 @@ public class MainPlayer : Player
     public override void damage(int damage)
     {
         base.damage(damage);
-        
+
         if (hp <= 0)
+        {
             gameManager.ganador = gameManager.combatiente[1];
-        
+            gameManager.finDePartida("Derrota...");
+        }
+
     }
     public override void getCountered(int damage)
     {
         base.getCountered(damage);
 
         if (hp <= 0)
+        {
             gameManager.ganador = gameManager.combatiente[1];
+            gameManager.finDePartida("Derrota...");
+        }
+            
 
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -7,8 +8,13 @@ public class Card : MonoBehaviour
     public int baseCost = 2;
     public int coste = 2;
 
+    public bool esVacia = false;
+    public TextMeshProUGUI intensidadText;
+    public TextMeshProUGUI costeText;
+
     //control de si esta seleccionada para jugarla
     private bool toPlay = false;
+    public bool seleccionable = true;
 
     public Player owner;
     public Player rival;
@@ -32,6 +38,12 @@ public class Card : MonoBehaviour
     {
         efectocarta.player = owner;
         efectocarta.adversario = rival;
+        if (!esVacia)
+        {
+            this.costeText.text = this.coste.ToString();
+            this.intensidadText.text = this.efectocarta.intensidad.ToString();
+        }
+        
     }
     public void selectCard()
     {
@@ -40,20 +52,22 @@ public class Card : MonoBehaviour
 
         //Debug.Log(toPlay);
 
-        
-        if(owner.mana >= coste + owner.manaSpendPreview)
+        //seleccionable es para no seleccionar las que estan en mesa
+        if(seleccionable && owner.canPlay)
         {
-            toPlay = !toPlay;
-
-            if (toPlay)
+            
+            if (!owner.jugada.Contains(this))
             {
-                
-                owner.manaSpendPreview += coste;
-                //Debug.Log("Isplayed");
-                transform.position += Vector3.up * 50;
-                owner.espacioslibres[owner.mano.IndexOf(this)]= true;
-                owner.jugada.Add(this);
-                owner.updateMana();
+                if(owner.mana >= coste + owner.manaSpendPreview)
+                {
+                    owner.manaSpendPreview += coste;
+                    //Debug.Log("Isplayed");
+                    transform.position += Vector3.up * 50;
+                    owner.espacioslibres[owner.mano.IndexOf(this)] = true;
+                    owner.jugada.Add(this);
+                    owner.updateMana();
+                }
+                    
 
             }
             else

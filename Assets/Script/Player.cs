@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public string nombre = "";
     public Player rival;
 
+    public bool canPlay = true;
+
     public int defensa = 1;
 
     public int mana = 10;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI defensaUI;
 
     public Image[] hpMarkers;
+  
 
     public int manaSpendPreview = 0;
     
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
 
     public virtual void nuevoTurno()
     {
+        canPlay = true;
         //Debug.Log("Comienzo de turno");
         //int contador = 0;
         prot = 0;
@@ -166,6 +170,9 @@ public class Player : MonoBehaviour
             {
                 if (espacioslibres[i])
                 {
+                    Debug.Log("Carta sacada");
+                    carta.seleccionable = true;
+
                     carta.gameObject.SetActive(true);
                     carta.transform.position = espacios[i].position;
                     carta.transform.SetSiblingIndex(i);
@@ -265,13 +272,15 @@ public class Player : MonoBehaviour
         foreach(Card card in jugada)
         {
             card.transform.position = espaciosJugado[jugada.IndexOf(card)].position;
-
+            Debug.Log("carta jugada" + jugada.IndexOf(card));
+            card.seleccionable = false;
             mano.Remove(card);
         }
         
         this.mana -= manaSpendPreview;
         this.manaSpendPreview = 0;
         updateMana();
+        canPlay = false;
 
     }
 
@@ -319,6 +328,7 @@ public class Player : MonoBehaviour
             hp--;
             losthp = true;
             //marcadores van 0-2 es facil desactivar el ultimo sin mas
+            if(hpMarkers.Length > 0) 
             hpMarkers[hp].gameObject.SetActive(false);
 
         }

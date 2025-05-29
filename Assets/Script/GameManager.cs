@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public List<Card> jugadaPlayer;
 
     public List<Card> jugadaAdversario;
+
+    public MonoBehaviour mensajeFinal;
+    public TextMeshProUGUI mensajeFinalTexto;
 
     public Card emptyCardJugador;
     public Card emptyCardAdversario;
@@ -100,7 +104,8 @@ public class GameManager : MonoBehaviour
                 }
 
 
-
+                if (finPartida)
+                    StopCoroutine(ejecutarResolucion());
 
                 //regularCombatTrigger();
             }
@@ -128,7 +133,8 @@ public class GameManager : MonoBehaviour
                 }
 
 
-
+                if (finPartida)
+                    StopCoroutine(ejecutarResolucion());
 
                 //regularCombatTrigger();
             }
@@ -137,6 +143,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Final de resolucion");
 
+        
         StartCoroutine(delayTurno());
     }
 
@@ -161,6 +168,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void finDePartida(String mensaje)
+    {
+        finPartida = true;
+        mensajeFinalTexto.text = mensaje;
+        mensajeFinal.gameObject.SetActive(true);
+    }
     //metodos obsoleto con el nuevo sistema de efectos
     /*
     public void regularCombatTrigger()
