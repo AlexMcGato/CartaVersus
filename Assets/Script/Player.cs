@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
 
     public virtual void jugarMano()
     {
-        List<Card> resultCards = new List<Card>();
+        //List<Card> resultCards = new List<Card>();
 
         jugada = aplicarModificadores(jugada);
         foreach(Card card in jugada)
@@ -305,7 +305,8 @@ public class Player : MonoBehaviour
             hp--;
             losthp = true;
             //marcadores van 0-2 es facil desactivar el ultimo sin mas
-            hpMarkers[hp].gameObject.SetActive(false);
+            if (hpMarkers.Length > 0)
+                hpMarkers[hp].gameObject.SetActive(false);
         }
     }
 

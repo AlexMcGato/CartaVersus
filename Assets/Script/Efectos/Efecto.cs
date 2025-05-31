@@ -32,8 +32,8 @@ public class Efecto :MonoBehaviour
         this.adversario = adversario;
         this.player = jugador;
     }
-  
-    
+    public Efecto() { }
+
     public void setOwner(Player owner)
     {
        this.player = owner;  
@@ -60,7 +60,7 @@ public class Efecto :MonoBehaviour
         }
     }
      
-    public Efecto() { }
+    
 
     public void emptyClash(Card origen)
     {

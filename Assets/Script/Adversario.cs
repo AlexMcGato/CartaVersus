@@ -38,7 +38,7 @@ public class Adversario : Player
         //Debug.Log("(0)Inicio espera para seleccion");
         StartCoroutine(delaySeleccion());
 
-        StartCoroutine(delayJugada());
+        
         
         
     }
@@ -184,6 +184,9 @@ public class Adversario : Player
            Debug.Log("Carta en pos " + i + " es " + mano[i].name);
        }
         /*checkeo por el bucle infinito*/
+
+        //mejor llamar a esta rutina despues de acabar la selección por si se retrasa
+        StartCoroutine(delayJugada());
     }
     public override void jugarMano()
     {
