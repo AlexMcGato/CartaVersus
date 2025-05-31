@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\assets\\script\\cartas\\modifiers\\modificadorcarta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\cartas\\modifiers\\modificadorcarta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\assets\\script\\cartas\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\cartas\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{710B8E01-5142-EBD0-A24C-77FD1B43953F}|Assembly-CSharp.csproj|D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\assets\\script\\adversario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ModificadorCarta.cs",
               "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Cartas\\Modifiers\\ModificadorCarta.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Cartas\\Modifiers\\ModificadorCarta.cs",
@@ -91,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Card.cs",
               "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Cartas\\Card.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Cartas\\Card.cs",
@@ -104,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "WeakenMod.cs",
               "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Cartas\\Modifiers\\WeakenMod.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Cartas\\Modifiers\\WeakenMod.cs",
@@ -117,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DmgEfect.cs",
               "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\Efectos\\DmgEfect.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Efectos\\DmgEfect.cs",
@@ -156,13 +156,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\GameManager.cs",
               "ToolTip": "D:\\Alejandro\\DAM\\TFG\\Proyecto\\CartaVersus\\Assets\\Script\\GameManager.cs",
               "RelativeToolTip": "Assets\\Script\\GameManager.cs",
-              "ViewState": "AgIAALAAAAAAAAAAAAAAAGAAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAEwK0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T09:55:01.257Z",
               "EditorCaption": ""
